@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <style>
+  html {
+  	scroll-behavior: smooth;
+  }
+  .spacer {
+    height: 100vh;
+    background: #f0f0f0;
+  }
+</style>
+</head>
+<body class="body">
+  <div class="spacer"></div>
+  <div class="container">
+    <div class="anim__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt tristique arcu ut eleifend. Vestibulum ultricies sit amet tellus ac faucibus. Ut dui dui, viverra eget condimentum non, fringilla non magna.</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="container">
+    <div class="anim__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt tristique arcu ut eleifend. Vestibulum ultricies sit amet tellus ac faucibus. Ut dui dui, viverra eget condimentum non, fringilla non magna.</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="container">
+    <div class="anim__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt tristique arcu ut eleifend. Vestibulum ultricies sit amet tellus ac faucibus. Ut dui dui, viverra eget condimentum non, fringilla non magna.</div>
+  </div>
+  <div class="spacer"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" integrity="sha512-v8B8T8l8JiiJRGomPd2k+bPS98RWBLGChFMJbK1hmHiDHYq0EjdQl20LyWeIs+MGRLTWBycJGEGAjKkEtd7w5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script>
+  const initRevealTextOnScroll = () => {
+    gsap.utils.toArray(".anim__text").forEach((text, i) => {
+      gsap.to(text.parentElement, {
+        scrollTrigger: {
+          trigger: text.parentElement,
+          pin: true,
+          start: "center center",
+          end: "+=1000",
+        }
+      });
+    });
+  }
+  
+  const initAnimations = () => {
+    gsap.registerPlugin(ScrollTrigger);
+    initRevealTextOnScroll();
+  }
+
+  window.addEventListener('load', e => {
+    console.log('Window fully loaded');
+    initAnimations();
+  });
+</script>
+</body>
+</html>
